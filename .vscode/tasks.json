@@ -68,6 +68,12 @@
       "problemMatcher": []
     },
     {
+      "label": "Hardhat - Deploy to platform network",
+      "type": "shell",
+      "command": "btp-scs hardhat script remote -s ${input:deployment-script}",
+      "problemMatcher": []
+    },
+    {
       "label": "The Graph - Deploy or update the subgraph",
       "type": "shell",
       "command": "btp-scs subgraph deploy",
@@ -80,6 +86,12 @@
       "description": "Hardhat Ignition Module",
       "type": "promptString",
       "default": "ignition/modules/ThumbzUp.ts"
+    },
+    {
+      "id": "deployment-script",
+      "description": "Hardhat deployment script",
+      "type": "promptString",
+      "default": "scripts/deploy.ts"
     }
   ]
 }
