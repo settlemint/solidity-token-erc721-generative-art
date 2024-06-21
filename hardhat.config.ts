@@ -10,6 +10,7 @@ import './tasks/opensea-proxy-address';
 import './tasks/placeholder';
 import './tasks/reveal';
 import './tasks/whitelist';
+import './tasks/compile-ui-info';
 
 const config: HardhatUserConfig = {
   solidity: {

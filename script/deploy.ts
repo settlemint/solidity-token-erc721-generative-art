@@ -30,6 +30,10 @@ async function main() {
       ThumbzUpModule: { placeholder: placeholder, proxyaddress: proxyaddress },
     },
   });
+
+  await run('compile-ui-info', {
+    files: [`./assets/generated/json/previews.json`].join(','),
+  });
 }
 
 main().catch(console.error);
