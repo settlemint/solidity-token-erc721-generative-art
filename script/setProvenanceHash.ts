@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import hre, { network } from 'hardhat';
-import { ThumbzUpPresale } from '../ignition/modules/ThumbzUp';
+import { ThumbzUpProvenanceHash } from '../ignition/modules/ThumbzUp';
 
 async function main() {
   const collectionExists = await run('check-images');
@@ -11,10 +11,13 @@ async function main() {
   const chainIdHex = await network.provider.send('eth_chainId');
   const chainId = String(parseInt(chainIdHex, 16));
 
-  const whitelist: {
-    root: string;
-    proofs: string[];
-  } = JSON.parse(readFileSync('./assets/generated/whitelist.json', 'utf8'));
+  const {
+    provenance,
+  }: {
+    provenance: string;
+  } = JSON.parse(
+    readFileSync('./art_engine/build/json/provenanceHash.json', 'utf8')
+  );
 
   try {
     const jsonData = JSON.parse(
@@ -24,9 +27,9 @@ async function main() {
       )
     );
     const address = jsonData['ThumbzUpModule#ThumbzUp'];
-    const { thumbzup } = await hre.ignition.deploy(ThumbzUpPresale, {
+    const { thumbzup } = await hre.ignition.deploy(ThumbzUpProvenanceHash, {
       parameters: {
-        ThumbzUpPresale: { address: address, whitelistRoot: whitelist.root },
+        ThumbzUpProvenanceHash: { address: address, provenance: provenance },
       },
     });
   } catch (err) {

@@ -79,7 +79,7 @@
       "id": "deployment-module",
       "description": "Hardhat Ignition Module",
       "type": "promptString",
-      "default": "ignition/modules/MetaDog.ts"
+      "default": "ignition/modules/ThumbzUp.ts"
     }
   ]
 }

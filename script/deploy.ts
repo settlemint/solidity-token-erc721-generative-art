@@ -1,5 +1,5 @@
 import hre from 'hardhat';
-import { default as MetaDogModule } from '../ignition/modules/MetaDog';
+import { default as ThumbzUpModule } from '../ignition/modules/ThumbzUp';
 
 import { network } from 'hardhat';
 
@@ -11,14 +11,23 @@ async function main() {
     chainid: chainId,
   });
 
-  await run('generate-assets');
+  const collectionExists = await run('check-images', { foldername: 'images' });
+
+  if (!collectionExists) {
+    throw new Error('You have not created any assets.');
+  }
 
   const placeholder: string = await run('placeholder', {
     amount: 1,
   });
-  const { metadog } = await hre.ignition.deploy(MetaDogModule, {
+
+  await run('previews');
+
+  const placeholder = await run('placeholder', { foldername: 'images' });
+
+  const { thumbzup } = await hre.ignition.deploy(ThumbzUpModule, {
     parameters: {
-      MetaDogModule: { placeholder: placeholder, proxyaddress: proxyaddress },
+      ThumbzUpModule: { placeholder: placeholder, proxyaddress: proxyaddress },
     },
   });
 }

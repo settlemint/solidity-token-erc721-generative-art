@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import hre, { network } from 'hardhat';
-import { MetaDogReserve } from '../ignition/modules/MetaDog';
+import { ThumbzUpReserve } from '../ignition/modules/ThumbzUp';
 
 async function main() {
   const collectionExists = await run('check-images');
@@ -18,10 +18,10 @@ async function main() {
         'utf8'
       )
     );
-    const address = jsonData['MetaDogModule#MetaDog'];
-    const { metadog } = await hre.ignition.deploy(MetaDogReserve, {
+    const address = jsonData['ThumbzUpModule#ThumbzUp'];
+    const { thumbzup } = await hre.ignition.deploy(ThumbzUpReserve, {
       parameters: {
-        MetaDogReserve: { address: address },
+        ThumbzUpReserve: { address: address },
       },
     });
   } catch (err) {

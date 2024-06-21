@@ -23,7 +23,7 @@ contract ThumzUpTest is Test {
 
     function setUp() public {
         vm.startPrank(owner);
-        exampleERC721 = new MetaDog(
+        exampleERC721 = new ThumbzUp(
             "Example Token",
             "EXT",
             baseURLPlaceholder,
@@ -33,7 +33,7 @@ contract ThumzUpTest is Test {
         vm.stopPrank();
     }
 
-    function testDeployment() public {
+    function testDeployment() public view {
         assertEq(exampleERC721.name(), "Example Token");
         assertEq(exampleERC721.symbol(), "EXT");
         assertEq(exampleERC721.wallet(), wallet);
@@ -170,7 +170,7 @@ contract ThumzUpTest is Test {
         vm.stopPrank();
     }
 
-    function testSupportsInterface() public {
+    function testSupportsInterface() public view {
         // Check if the contract supports the ERC721 interface
         assertTrue(exampleERC721.supportsInterface(type(IERC721).interfaceId));
         // Check if the contract supports the Ownable interface

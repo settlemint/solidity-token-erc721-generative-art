@@ -4,6 +4,19 @@
   "description": "An ERC721 token contract with generative art.",
   "author": "SettleMint <hello@settlemint.com>",
   "license": "MIT",
+  "scripts": {
+    "artengine:all": "npm artengine:build && npm artengine:preview && npm artengine:provenance",
+    "artengine:build": "cd art_engine && node index.js",
+    "artengine:generate": "cd art_engine && node index.js",
+    "artengine:rarity": "cd art_engine && node utils/rarity.js",
+    "artengine:pixelate": "cd art_engine && node utils/pixelate.js",
+    "artengine:update_info": "cd art_engine && node utils/update_info.js",
+    "artengine:preview": "npm artengine:preview_png && npm artengine:preview_gif",
+    "artengine:preview_png": "cd art_engine && node utils/preview.js",
+    "artengine:preview_gif": "cd art_engine && node utils/preview_gif.js",
+    "artengine:provenance": "cd art_engine && node utils/provenance.js",
+    "artengine:generate_metadata": "cd art_engine && node utils/generate_metadata.js"
+  },
   "devDependencies": {
     "@amxx/graphprotocol-utils": "1.1.0",
     "@graphprotocol/graph-cli": "0.73.0",

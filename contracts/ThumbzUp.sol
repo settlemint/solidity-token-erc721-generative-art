@@ -66,7 +66,7 @@ contract ThumbzUp is
     string memory baseTokenURI_,
     address proxyRegistryAddress_,
     address payable wallet_
-  ) ERC721(name_, symbol_) ERC721OpenSeaGassLess(proxyRegistryAddress_) {
+  ) ERC721(name_, symbol_) ERC721OpenSeaGassLess(proxyRegistryAddress_) Ownable(msg.sender){
     _baseTokenURI = baseTokenURI_;
     _wallet = wallet_;
     _setDefaultRoyalty(wallet_, ROYALTIES_IN_BASIS_POINTS);
@@ -90,22 +90,30 @@ contract ThumbzUp is
     return bytes(tokenUri).length > 0 ? string(abi.encodePacked(tokenUri, ".json")) : "";
   }
 
-  function _beforeTokenTransfer(
-    address from,
-    address to,
-    uint256 tokenId,
-    uint256 batchSize
-  ) internal override(ERC721, ERC721Enumerable, ERC721Pausable, ERC721MintPausable) {
-    super._beforeTokenTransfer(from, to, tokenId, batchSize);
+  function update(address to, uint256 tokenId, address auth)public returns(address) {
+        return _update(to, tokenId, auth);
+    }
+
+  function _update(
+        address to,
+        uint256 tokenId,
+        address auth
+    )
+        internal
+        virtual
+        override(ERC721Enumerable, ERC721, ERC721Freezable, ERC721Pausable, ERC721MintPausable)
+        returns (address)
+    {
+        // your code here
+        return super._update(to, tokenId, auth);
+    }
+
+  function increaseBalance(address account, uint128 value) public {
+        _increaseBalance(account, value);
   }
 
-  function _afterTokenTransfer(
-    address from,
-    address to,
-    uint256 tokenId,
-    uint256 batchSize
-  ) internal override(ERC721, ERC721Freezable) {
-    super._afterTokenTransfer(from, to, tokenId, batchSize);
+  function _increaseBalance(address account, uint128 value) internal override(ERC721, ERC721Enumerable) {
+      super._increaseBalance(account, value);
   }
 
   //////////////////////////////////////////////////////////////////
@@ -209,12 +217,8 @@ contract ThumbzUp is
     return _wallet;
   }
 
-  function _burn(uint256 tokenId) internal override(ERC721, ERC721Royalty) {
-    super._burn(tokenId);
-  }
-
-  function burn(uint256 tokenId) public override {
-    _burn(tokenId);
+  function burn(uint256 tokenId) public override(ERC721Burnable) {
+        super.burn(tokenId);
   }
 
   function freeze() external onlyOwner {
