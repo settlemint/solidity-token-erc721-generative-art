@@ -3,7 +3,6 @@ import '@nomicfoundation/hardhat-toolbox';
 import '@nomiclabs/hardhat-solhint';
 import type { HardhatUserConfig } from 'hardhat/config';
 import './tasks/check-images';
-import './tasks/generate-assets';
 import './tasks/ipfs-cid';
 import './tasks/ipfs-upload-file';
 import './tasks/opensea-proxy-address';
