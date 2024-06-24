@@ -53,7 +53,7 @@
       "type": "shell",
       "command": "btp-scs hardhat network",
       "problemMatcher": [],
-      "isBackground": true,
+      "isBackground": true
     },
     {
       "label": "Hardhat - Deploy to local network",
@@ -64,13 +64,43 @@
     {
       "label": "Hardhat - Deploy to platform network",
       "type": "shell",
-      "command": "btp-scs hardhat deploy remote -m ${input:deployment-module}",
+      "command": "btp-scs hardhat script remote -s ${input:deployment-script}",
       "problemMatcher": []
     },
     {
-      "label": "Hardhat - Deploy to platform network",
+      "label": "Hardhat - Set provenance hash",
       "type": "shell",
-      "command": "btp-scs hardhat script remote -s ${input:deployment-script}",
+      "command": "btp-scs hardhat script remote -s ${input:provenance-hash-script}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardhat - Start presale",
+      "type": "shell",
+      "command": "btp-scs hardhat script remote -s ${input:presale-script}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardhat - Collect reserved",
+      "type": "shell",
+      "command": "btp-scs hardhat script remote -s ${input:reserved-script}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardhat - Start public sale",
+      "type": "shell",
+      "command": "btp-scs hardhat script remote -s ${input:public-sale-script}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardhat - whitelist",
+      "type": "shell",
+      "command": "btp-scs hardhat script remote -s ${input:whitelist-script}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardhat - reveal",
+      "type": "shell",
+      "command": "btp-scs hardhat script remote -s ${input:reveal-script}",
       "problemMatcher": []
     },
     {
@@ -92,6 +122,42 @@
       "description": "Hardhat deployment script",
       "type": "promptString",
       "default": "scripts/deploy.ts"
+    },
+    {
+      "id": "provenance-hash-script",
+      "description": "Hardhat deployment script",
+      "type": "promptString",
+      "default": "scripts/setProvenanceHash.ts"
+    },
+    {
+      "id": "presale-script",
+      "description": "Hardhat deployment script",
+      "type": "promptString",
+      "default": "scripts/presale.ts"
+    },
+    {
+      "id": "reserved-script",
+      "description": "Hardhat deployment script",
+      "type": "promptString",
+      "default": "scripts/collectReserved.ts"
+    },
+    {
+      "id": "public-sale-script",
+      "description": "Hardhat deployment script",
+      "type": "promptString",
+      "default": "scripts/publicSale.ts"
+    },
+    {
+      "id": "whitelist-script",
+      "description": "Hardhat deployment script",
+      "type": "promptString",
+      "default": "scripts/whitelist.ts"
+    },
+    {
+      "id": "reveal-script",
+      "description": "Hardhat deployment script",
+      "type": "promptString",
+      "default": "scripts/reveal.ts"
     }
   ]
 }
