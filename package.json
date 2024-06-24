@@ -11,7 +11,7 @@
     "artengine:rarity": "cd art_engine && node utils/rarity.js",
     "artengine:pixelate": "cd art_engine && node utils/pixelate.js",
     "artengine:update_info": "cd art_engine && node utils/update_info.js",
-    "artengine:preview": "npm artengine:preview_png && npm artengine:preview_gif",
+    "artengine:preview": "npm run artengine:preview_png && npm run artengine:preview_gif",
     "artengine:preview_png": "cd art_engine && node utils/preview.js",
     "artengine:preview_gif": "cd art_engine && node utils/preview_gif.js",
     "artengine:provenance": "cd art_engine && node utils/provenance.js",
