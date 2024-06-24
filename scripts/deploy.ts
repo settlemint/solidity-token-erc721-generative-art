@@ -17,10 +17,6 @@ async function main() {
     throw new Error('You have not created any assets.');
   }
 
-  const placeholder: string = await run('placeholder', {
-    amount: 1,
-  });
-
   await run('previews');
 
   const placeholder = await run('placeholder', { foldername: 'images' });

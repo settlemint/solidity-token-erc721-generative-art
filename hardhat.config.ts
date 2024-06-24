@@ -10,6 +10,7 @@ import './tasks/placeholder';
 import './tasks/reveal';
 import './tasks/whitelist';
 import './tasks/compile-ui-info';
+import './tasks/previews';
 
 const config: HardhatUserConfig = {
   solidity: {
