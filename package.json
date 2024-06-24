@@ -5,7 +5,7 @@
   "author": "SettleMint <hello@settlemint.com>",
   "license": "MIT",
   "scripts": {
-    "artengine:all": "npm artengine:build && npm artengine:preview && npm artengine:provenance",
+    "artengine:all": "npm run artengine:build && npm run artengine:preview && npm run artengine:provenance",
     "artengine:build": "cd art_engine && node index.js",
     "artengine:generate": "cd art_engine && node index.js",
     "artengine:rarity": "cd art_engine && node utils/rarity.js",
@@ -41,6 +41,7 @@
     "@nomicfoundation/solidity-analyzer-linux-x64-gnu": "0.1.2",
     "canvas": "^3.0.0-rc2",
     "ethers": "6.13.1",
+    "gif-encoder-2": "^1.0.5",
     "image-size": "1.1.1",
     "ipfs-http-client": "55.0.0",
     "keccak256": "1.0.6",
