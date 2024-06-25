@@ -102,19 +102,25 @@ btp-scs hardhat script remote -s <PROVENANCE_SCRIPT>
 btp-scs hardhat script remote -s <COLLECT_RESERVED>
 ```
 
-4. Start the presale:
+4. Generate the Merkle tree of whitelisted addresses:
+
+```shell
+btp-scs hardhat script remote -s <WHITELIST>
+```
+
+5. Start the presale:
 
 ```shell
 btp-scs hardhat script remote -s <PRESALE>
 ```
 
-5. Start the public sale:
+6. Start the public sale:
 
 ```shell
 btp-scs hardhat script remote -s <PUBLIC_SALE>
 ```
 
-5. Reveal tokens:
+7. Reveal tokens:
 
 ```shell
 btp-scs hardhat script remote -s <REVEAL>
