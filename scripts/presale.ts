@@ -1,15 +1,20 @@
 import { readFileSync } from 'fs';
 import hre, { network } from 'hardhat';
-import { ThumbzUpReserve } from '../ignition/modules/ThumbzUp';
+import { ThumbzUpPresale } from '../ignition/modules/ThumbzUp';
 
 async function main() {
-  const collectionExists = await run('check-images');
+  const collectionExists = await run('check-images', { foldername: 'images' });
 
   if (!collectionExists) {
     throw new Error('You have not created any assets.');
   }
   const chainIdHex = await network.provider.send('eth_chainId');
   const chainId = String(parseInt(chainIdHex, 16));
+
+  const whitelist: {
+    root: string;
+    proofs: string[];
+  } = JSON.parse(readFileSync('./assets/generated/whitelist.json', 'utf8'));
 
   try {
     const jsonData = JSON.parse(
@@ -19,9 +24,9 @@ async function main() {
       )
     );
     const address = jsonData['ThumbzUpModule#ThumbzUp'];
-    const { thumbzup } = await hre.ignition.deploy(ThumbzUpReserve, {
+    const { thumbzup } = await hre.ignition.deploy(ThumbzUpPresale, {
       parameters: {
-        ThumbzUpReserve: { address: address },
+        ThumbzUpPresale: { address: address, whitelistRoot: whitelist.root },
       },
     });
   } catch (err) {

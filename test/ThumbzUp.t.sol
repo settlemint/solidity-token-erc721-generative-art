@@ -21,6 +21,8 @@ contract ThumzUpTest is Test {
     string revealedTokenURI =
         "ipfs://bafybeihxsckb6gl6yzyn4sjwyspf2lldlhmxo7usqebkdvol2l6uehryei/1.json";
 
+    string provenanceHash = "exampleProvenanceHash";
+
     function setUp() public {
         vm.startPrank(owner);
         exampleERC721 = new ThumbzUp(
@@ -30,6 +32,7 @@ contract ThumzUpTest is Test {
             proxyRegistryAddress,
             wallet
         );
+        exampleERC721.setProvenanceHash(provenanceHash); // Set the provenance hash
         vm.stopPrank();
     }
 
@@ -221,6 +224,5 @@ contract ThumzUpTest is Test {
         assertEq(exampleERC721.mintPaused(), true);
         exampleERC721.unpauseMint();
         assertEq(exampleERC721.mintPaused(), false);
-
     }
 }

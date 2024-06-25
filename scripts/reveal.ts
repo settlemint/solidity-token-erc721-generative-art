@@ -3,7 +3,7 @@ import hre, { network } from 'hardhat';
 import { ThumbzUpPublicSale } from '../ignition/modules/ThumbzUp';
 
 async function main() {
-  const collectionExists = await run('check-images');
+  const collectionExists = await run('check-images', { foldername: 'images' });
 
   if (!collectionExists) {
     throw new Error('You have not created any assets.');
