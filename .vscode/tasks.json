@@ -62,43 +62,43 @@
       "problemMatcher": []
     },
     {
-      "label": "Hardhat - Deploy to platform network",
+      "label": "Hardhat - 01 - Deploy contract and upload images",
       "type": "shell",
       "command": "btp-scs hardhat script remote -s ${input:deployment-script}",
       "problemMatcher": []
     },
     {
-      "label": "Hardhat - Set provenance hash",
+      "label": "Hardhat - 02 - Set provenance hash",
       "type": "shell",
       "command": "btp-scs hardhat script remote -s ${input:provenance-hash-script}",
       "problemMatcher": []
     },
     {
-      "label": "Hardhat - Start presale",
-      "type": "shell",
-      "command": "btp-scs hardhat script remote -s ${input:presale-script}",
-      "problemMatcher": []
-    },
-    {
-      "label": "Hardhat - Collect reserved",
+      "label": "Hardhat - 03 - Collect reserved tokens",
       "type": "shell",
       "command": "btp-scs hardhat script remote -s ${input:reserved-script}",
       "problemMatcher": []
     },
     {
-      "label": "Hardhat - Start public sale",
-      "type": "shell",
-      "command": "btp-scs hardhat script remote -s ${input:public-sale-script}",
-      "problemMatcher": []
-    },
-    {
-      "label": "Hardhat - whitelist",
+      "label": "Hardhat - 04 - create whitelist and set root",
       "type": "shell",
       "command": "btp-scs hardhat script remote -s ${input:whitelist-script}",
       "problemMatcher": []
     },
     {
-      "label": "Hardhat - reveal",
+      "label": "Hardhat - 05 - Start presale",
+      "type": "shell",
+      "command": "btp-scs hardhat script remote -s ${input:presale-script}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardhat - 06 - Start public sale",
+      "type": "shell",
+      "command": "btp-scs hardhat script remote -s ${input:public-sale-script}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Hardhat - 07 - reveal tokens",
       "type": "shell",
       "command": "btp-scs hardhat script remote -s ${input:reveal-script}",
       "problemMatcher": []
