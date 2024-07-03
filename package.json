@@ -45,7 +45,7 @@
     "ipfs-http-client": "55.0.0",
     "keccak256": "1.0.6",
     "lodash": "4.17.21",
-    "merkletreejs": "0.3.11",
+    "merkletreejs": "0.4.0",
     "nft.storage": "7.1.1",
     "sharp": "^0.33.4"
   }
