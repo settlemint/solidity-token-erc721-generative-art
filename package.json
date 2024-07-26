@@ -17,7 +17,7 @@
     "@openzeppelin/subgraphs": "0.1.8-5",
     "@types/node": "20.14.12",
     "hardhat": "2.22.6",
-    "solhint": "5.0.1"
+    "solhint": "5.0.2"
   },
   "overrides": {
     "@graphprotocol/graph-cli": "0.79.0",
