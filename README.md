@@ -1,3 +1,5 @@
+![OG](OG_Solidity.jpg)
+
 # ERC721 Trading Cards
 
 A trading cards NFT example.
