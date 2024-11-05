@@ -36,7 +36,7 @@
   ],
   "dependencies": {
     "@amxx/graphprotocol-utils": "1.2.0",
-    "@graphprotocol/graph-cli": "0.87.0",
+    "@graphprotocol/graph-cli": "0.88.0",
     "@graphprotocol/graph-ts": "0.35.1",
     "@nomicfoundation/hardhat-foundry": "1.1.2",
     "@nomicfoundation/hardhat-ignition-viem": "0.15.7",
@@ -59,7 +59,7 @@
     "sharp": "0.33.5"
   },
   "overrides": {
-    "@graphprotocol/graph-cli": "0.87.0",
+    "@graphprotocol/graph-cli": "0.88.0",
     "@graphprotocol/graph-ts": "0.35.1"
   }
 }
