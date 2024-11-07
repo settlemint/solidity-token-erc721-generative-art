@@ -21,7 +21,7 @@ forge init my-project --template settlemint/solidity-token-erc721-generative-art
 Or if you want to use this set as a dependency of your own,
 
 ```shell
-npm install @settlemint/solidity-token-erc721-generative-art
+bun install @settlemint/solidity-token-erc721-generative-art
 ```
 
 ## DX: Foundry & Hardhat hybrid
