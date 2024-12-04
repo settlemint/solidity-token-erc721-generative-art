@@ -39,7 +39,7 @@ async function ipfsUpload(
 
   const btpIpfs = process.env.BTP_IPFS;
 
-  if (btpIpfs?.includes('api.thegraph.com') || !btpIpfs) {
+  if (btpIpfs?.includes('network.thegraph.com') || !btpIpfs) {
     throw new Error(`No IPFS node found or configured wrong.`);
   }
   const lastSlashIndex = btpIpfs.lastIndexOf('/');
