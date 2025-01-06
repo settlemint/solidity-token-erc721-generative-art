@@ -14,7 +14,7 @@
         "@nomiclabs/hardhat-solhint": "4.0.1",
         "@openzeppelin/contracts": "5.1.0",
         "@openzeppelin/subgraphs": "0.1.8-5",
-        "canvas": "3.0.0",
+        "canvas": "3.0.1",
         "ethers": "6.13.5",
         "hardhat": "2.22.17",
         "image-size": "1.2.0",
@@ -605,7 +605,7 @@
 
     "camelcase-keys": ["camelcase-keys@6.2.2", "", { "dependencies": { "camelcase": "^5.3.1", "map-obj": "^4.0.0", "quick-lru": "^4.0.1" } }, "sha512-YrwaA0vEKazPBkn0ipTiMpSajYDSe+KjQfrjhcBMxJt/znbvlHd8Pw/Vamaz5EB4Wfhs3SUR3Z9mwRu/P3s3Yg=="],
 
-    "canvas": ["canvas@3.0.0", "", { "dependencies": { "node-addon-api": "^7.0.0", "prebuild-install": "^7.1.1", "simple-get": "^3.0.3" } }, "sha512-NtcIBY88FjymQy+g2g5qnuP5IslrbWCQ3A6rSr1PeuYxVRapRZ3BZCrDyAakvI6CuDYidgZaf55ygulFVwROdg=="],
+    "canvas": ["canvas@3.0.1", "", { "dependencies": { "node-addon-api": "^7.0.0", "prebuild-install": "^7.1.1", "simple-get": "^3.0.3" } }, "sha512-PcpVF4f8RubAeN/jCQQ/UymDKzOiLmRPph8fOTzDnlsUihkO/AUlxuhaa7wGRc3vMcCbV1fzuvyu5cWZlIcn1w=="],
 
     "carbites": ["carbites@1.0.6", "", { "dependencies": { "@ipld/car": "^3.0.1", "@ipld/dag-cbor": "^6.0.3", "@ipld/dag-pb": "^2.0.2", "multiformats": "^9.0.4" } }, "sha512-dS9IQvnrb5VIRvSTNz5Ff+mB9d2MFfi5mojtJi7Rlss79VeF190jr0sZdA7eW0CGHotvHkZaWuM6wgfD9PEFRg=="],
 
