@@ -70,7 +70,5 @@
     "secp256k1",
     "sharp"
   ],
-  "devDependencies": {
-    "@settlemint/sdk-cli": "1.0.0"
-  }
+  "devDependencies": {}
 }
