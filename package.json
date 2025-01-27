@@ -1,5 +1,5 @@
 {
-  "name": "@settlemint/ssolidity-token-erc721-generative-art",
+  "name": "@settlemint/solidity-token-erc721-generative-art",
   "description": "Smart contract set to build an ERC721 token with generated art in SettleMint",
   "version": "7.12.0",
   "private": false,
