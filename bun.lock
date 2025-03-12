@@ -21,7 +21,7 @@
         "ipfs-http-client": "55.0.0",
         "keccak256": "1.0.6",
         "lodash": "4.17.21",
-        "merkletreejs": "0.4.1",
+        "merkletreejs": "0.5.1",
         "nft.storage": "7.2.0",
         "sharp": "0.33.5",
         "solhint": "5.0.5",
@@ -1233,7 +1233,7 @@
 
     "merge2": ["merge2@1.4.1", "", {}, "sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg=="],
 
-    "merkletreejs": ["merkletreejs@0.4.1", "", { "dependencies": { "buffer-reverse": "^1.0.1", "crypto-js": "^4.2.0", "treeify": "^1.1.0" } }, "sha512-W2VSHeGTdAnWtedee+pgGn7SHvncMdINnMeHAaXrfarSaMNLff/pm7RCr/QXYxN6XzJFgJZY+28ejO0lAosW4A=="],
+    "merkletreejs": ["merkletreejs@0.5.1", "", { "dependencies": { "buffer-reverse": "^1.0.1", "crypto-js": "^4.2.0", "treeify": "^1.1.0" } }, "sha512-iR1MI07/HvioeZUvG9EQorcY6zSun8LCmW4jqNbHdecv2XsOt7qYMHWspcjY//lwaSM8/GUMX7ehpm/+UvqrqQ=="],
 
     "micro-ftch": ["micro-ftch@0.3.1", "", {}, "sha512-/0LLxhzP0tfiR5hcQebtudP56gUurs2CLkGarnCiB/OqEyUFQ6U3paQi/tgLv0hBJYt2rnr9MNpxz4fiiugstg=="],
 
