@@ -2,7 +2,9 @@ import { readFileSync } from 'fs';
 import { task } from 'hardhat/config';
 import { create } from 'ipfs-http-client';
 import { Blob, NFTStorage } from 'nft.storage';
-import { nftStorageToken } from '../hardhat.config';
+
+// NFT Storage token - ideally this would be in config or .env
+const nftStorageToken = process.env.NFT_STORAGE_TOKEN || '';
 
 async function pinToNFTStorage(blob: Blob) {
   if (!nftStorageToken || nftStorageToken === '') {
@@ -20,35 +22,18 @@ async function ipfsUpload(
   content: Buffer | Record<string, any>,
   pin?: true
 ) {
-  const env = await fetch(
-    `${process.env.BTP_CLUSTER_MANAGER_URL}/ide/foundry/${process.env.BTP_SCS_ID}/env`,
-    {
-      headers: {
-        'x-auth-token': process.env.BTP_SERVICE_TOKEN!,
-      },
-    }
-  );
+  // Use SettleMint IPFS API endpoint directly from .env file
+  const btpIpfs = process.env.SETTLEMINT_IPFS_API_ENDPOINT;
 
-  const envText = await env.text();
-
-  const envVars = envText.split('\n').map((line) => line.trim());
-  for (const envVar of envVars) {
-    const [key, value] = envVar.split('=');
-    process.env[key] = value;
+  if (!btpIpfs) {
+    throw new Error(`No IPFS node configured. Please run 'settlemint connect' to set up your environment.`);
   }
 
-  const btpIpfs = process.env.BTP_IPFS;
-
-  if (btpIpfs?.includes('network.thegraph.com') || !btpIpfs) {
-    throw new Error(`No IPFS node found or configured wrong.`);
-  }
-  const lastSlashIndex = btpIpfs.lastIndexOf('/');
-  const baseUrl = btpIpfs.substring(0, lastSlashIndex);
-
+  // Create IPFS client with the API endpoint
   const ipfsClient = create({
-    url: baseUrl,
+    url: btpIpfs,
     headers: {
-      'x-auth-token': process.env.BTP_SERVICE_TOKEN!,
+      'x-auth-token': process.env.SETTLEMINT_ACCESS_TOKEN!,
     },
   });
   const contentToStore = Buffer.isBuffer(content)
