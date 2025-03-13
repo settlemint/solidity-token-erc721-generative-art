@@ -50,7 +50,7 @@
     "@nomicfoundation/solidity-analyzer-linux-x64-gnu": "0.1.2",
     "canvas": "3.1.0",
     "ethers": "6.13.5",
-    "image-size": "1.2.0",
+    "image-size": "2.0.1",
     "ipfs-http-client": "55.0.0",
     "keccak256": "1.0.6",
     "lodash": "4.17.21",
