@@ -56,7 +56,7 @@
     "lodash": "4.17.21",
     "merkletreejs": "0.5.2",
     "nft.storage": "7.2.0",
-    "sharp": "0.34.1"
+    "sharp": "0.34.2"
   },
   "overrides": {
     "@graphprotocol/graph-cli": "0.96.0",
