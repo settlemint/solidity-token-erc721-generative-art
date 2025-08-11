@@ -5,8 +5,8 @@ on:
     inputs:
       tag:
         description: "Semver WITHOUT the leading v (e.g. 8.0.10)"
-        type: string
         required: true
+        type: string
 
 permissions:
   contents: read
@@ -18,8 +18,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-and-push:
-    name: Build current main as multi-arch and tag it
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,20 +41,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Docker labels (metadata only)
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ghcr.io/${{ github.repository }}
-          # We'll set tags explicitly; use this step only for labels
-          tags: |
-            type=sha
-          labels: |
-            org.opencontainers.image.revision=${{ github.sha }}
-            org.opencontainers.image.version=${{ inputs.tag }}
+      - name: Compute tags
+        id: tags
+        run: |
+          echo "TAG=${{ inputs.tag }}" >> $GITHUB_ENV
+          echo "VTAG=v${{ inputs.tag }}" >> $GITHUB_ENV
+          echo "tags=ghcr.io/${{ github.repository }}:${{ inputs.tag }},ghcr.io/${{ github.repository }}:v${{ inputs.tag }}" >> $GITHUB_OUTPUT
 
-      - name: Build & push multi-arch
-        id: build
+      - name: Build & push (linux/amd64, linux/arm64)
+        id: buildpush
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -65,21 +59,25 @@ jobs:
           sbom: true
           no-cache: true
           tags: |
-            ghcr.io/${{ github.repository }}:${{ inputs.tag }}
-            ghcr.io/${{ github.repository }}:v${{ inputs.tag }}
-          labels: ${{ steps.meta.outputs.labels }}
+            ghcr.io/${{ github.repository }}:${{ env.TAG }}
+            ghcr.io/${{ github.repository }}:${{ env.VTAG }}
 
-      - name: Sign the images (cosign keyless OIDC)
-        env:
-          DIGEST: ${{ steps.build.outputs.digest }}
+      - name: Show what we pushed
         run: |
-          set -euo pipefail
-          images="ghcr.io/${{ github.repository }}:${{ inputs.tag }}@${DIGEST} ghcr.io/${{ github.repository }}:v${{ inputs.tag }}@${DIGEST}"
-          echo "Signing: $images"
-          cosign sign --yes $images
+          echo "Digest: ${{ steps.buildpush.outputs.digest }}"
+          echo "Tags:"
+          echo "  ghcr.io/${{ github.repository }}:${{ env.TAG }}"
+          echo "  ghcr.io/${{ github.repository }}:${{ env.VTAG }}"
+          docker buildx imagetools inspect ghcr.io/${{ github.repository }}:${{ env.TAG }}
+
+      - name: Install Cosign
         uses: sigstore/cosign-installer@v3
 
-      - name: Show manifest (sanity)
+      - name: Sign the images (keyless OIDC)
+        env:
+          DIGEST: ${{ steps.buildpush.outputs.digest }}
         run: |
-          docker buildx imagetools inspect ghcr.io/${{ github.repository }}:${{ inputs.tag }}
-          docker buildx imagetools inspect ghcr.io/${{ github.repository }}:v${{ inputs.tag }}
+          set -euo pipefail
+          images="ghcr.io/${{ github.repository }}:${{ env.TAG }}@${DIGEST} ghcr.io/${{ github.repository }}:${{ env.VTAG }}@${DIGEST}"
+          echo "Signing: $images"
+          cosign sign --yes $images
