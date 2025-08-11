@@ -1,4 +1,4 @@
-name: Rebuild a released tag (multi-arch)
+name: Rebuild tag from main (multi-arch)
 
 on:
   workflow_dispatch:
@@ -10,26 +10,26 @@ on:
 
 permissions:
   contents: read
-  packages: write   # needed to push to GHCR
+  packages: write
+  id-token: write
 
 concurrency:
-  group: rebuild-tag-${{ github.event.inputs.tag }}
+  group: rebuild-main-to-tag-${{ inputs.tag }}
   cancel-in-progress: false
 
 jobs:
-  rebuild:
-    name: Build & overwrite GHCR tag
+  build-and-push:
+    name: Build current main as multi-arch and tag it
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the exact release tag
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
-          # Checkout the Git tag that created the release (e.g. v8.0.10)
           ref: main
           fetch-depth: 0
 
-      - name: Set up QEMU (for cross-arch)
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
@@ -42,8 +42,20 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Build Linux images and overwrite the tag with a multi-arch manifest
-      - name: Build & push multi-arch to GHCR
+      - name: Docker labels (metadata only)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          # We'll set tags explicitly; use this step only for labels
+          tags: |
+            type=sha
+          labels: |
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.version=${{ inputs.tag }}
+
+      - name: Build & push multi-arch
+        id: build
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -51,9 +63,23 @@ jobs:
           platforms: linux/amd64,linux/arm64
           provenance: true
           sbom: true
-          tags: ghcr.io/${{ github.repository }}:${{ inputs.tag }}
+          no-cache: true
+          tags: |
+            ghcr.io/${{ github.repository }}:${{ inputs.tag }}
+            ghcr.io/${{ github.repository }}:v${{ inputs.tag }}
+          labels: ${{ steps.meta.outputs.labels }}
 
-      # Optional: print the resulting manifest so you can confirm both arches
-      - name: Show manifest (for sanity)
+      - name: Sign the images (cosign keyless OIDC)
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          set -euo pipefail
+          images="ghcr.io/${{ github.repository }}:${{ inputs.tag }}@${DIGEST} ghcr.io/${{ github.repository }}:v${{ inputs.tag }}@${DIGEST}"
+          echo "Signing: $images"
+          cosign sign --yes $images
+        uses: sigstore/cosign-installer@v3
+
+      - name: Show manifest (sanity)
         run: |
           docker buildx imagetools inspect ghcr.io/${{ github.repository }}:${{ inputs.tag }}
+          docker buildx imagetools inspect ghcr.io/${{ github.repository }}:v${{ inputs.tag }}
