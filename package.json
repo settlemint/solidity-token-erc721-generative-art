@@ -45,7 +45,7 @@
     "@openzeppelin/contracts": "5.4.0",
     "@openzeppelin/subgraphs": "0.1.8-5",
     "hardhat": "2.26.3",
-    "solhint": "6.0.0",
+    "solhint": "6.0.1",
     "@mapbox/node-pre-gyp": "2.0.0",
     "@nomicfoundation/solidity-analyzer-linux-x64-gnu": "0.1.2",
     "canvas": "3.2.0",
