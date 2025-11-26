@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "@settlemint/solidity-token-erc721-generative-art",
@@ -7,7 +8,7 @@
         "@amxx/graphprotocol-utils": "1.2.0",
         "@graphprotocol/graph-cli": "0.96.0",
         "@graphprotocol/graph-ts": "0.38.0",
-        "@mapbox/node-pre-gyp": "2.0.0",
+        "@mapbox/node-pre-gyp": "2.0.3",
         "@nomicfoundation/hardhat-foundry": "1.2.0",
         "@nomicfoundation/hardhat-ignition-viem": "0.15.15",
         "@nomicfoundation/hardhat-toolbox-viem": "4.1.1",
@@ -227,7 +228,7 @@
 
     "@libp2p/peer-id": ["@libp2p/peer-id@5.1.9", "", { "dependencies": { "@libp2p/crypto": "^5.1.8", "@libp2p/interface": "^2.11.0", "multiformats": "^13.3.6", "uint8arrays": "^5.1.0" } }, "sha512-cVDp7lX187Epmi/zr0Qq2RsEMmueswP9eIxYSFoMcHL/qcvRFhsxOfUGB8361E26s2WJvC9sXZ0oJS9XVueJhQ=="],
 
-    "@mapbox/node-pre-gyp": ["@mapbox/node-pre-gyp@2.0.0", "", { "dependencies": { "consola": "^3.2.3", "detect-libc": "^2.0.0", "https-proxy-agent": "^7.0.5", "node-fetch": "^2.6.7", "nopt": "^8.0.0", "semver": "^7.5.3", "tar": "^7.4.0" }, "bin": { "node-pre-gyp": "bin/node-pre-gyp" } }, "sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg=="],
+    "@mapbox/node-pre-gyp": ["@mapbox/node-pre-gyp@2.0.3", "", { "dependencies": { "consola": "^3.2.3", "detect-libc": "^2.0.0", "https-proxy-agent": "^7.0.5", "node-fetch": "^2.6.7", "nopt": "^8.0.0", "semver": "^7.5.3", "tar": "^7.4.0" }, "bin": { "node-pre-gyp": "bin/node-pre-gyp" } }, "sha512-uwPAhccfFJlsfCxMYTwOdVfOz3xqyj8xYL3zJj8f0pb30tLohnnFPhLuqp4/qoEz8sNxe4SESZedcBojRefIzg=="],
 
     "@multiformats/dns": ["@multiformats/dns@1.0.10", "", { "dependencies": { "buffer": "^6.0.3", "dns-packet": "^5.6.1", "hashlru": "^2.3.0", "p-queue": "^9.0.0", "progress-events": "^1.0.0", "uint8arrays": "^5.0.2" } }, "sha512-6X200ceQLns0b/CU0S/So16tGjB5eIXHJ1xvJMPoWaKFHWSgfpW2EhkWJrqap4U3+c37zcowVR0ToPXeYEL7Vw=="],
 
@@ -1744,6 +1745,8 @@
     "@libp2p/peer-id/multiformats": ["multiformats@13.4.1", "", {}, "sha512-VqO6OSvLrFVAYYjgsr8tyv62/rCQhPgsZUXLTqoFLSgdkgiUYKYeArbt1uWLlEpkjxQe+P0+sHlbPEte1Bi06Q=="],
 
     "@libp2p/peer-id/uint8arrays": ["uint8arrays@5.1.0", "", { "dependencies": { "multiformats": "^13.0.0" } }, "sha512-vA6nFepEmlSKkMBnLBaUMVvAC4G3CTmO58C12y4sq6WPDOR7mOFYOi7GlrQ4djeSbP6JG9Pv9tJDM97PedRSww=="],
+
+    "@mapbox/node-pre-gyp/semver": ["semver@7.7.3", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q=="],
 
     "@multiformats/dns/uint8arrays": ["uint8arrays@5.1.0", "", { "dependencies": { "multiformats": "^13.0.0" } }, "sha512-vA6nFepEmlSKkMBnLBaUMVvAC4G3CTmO58C12y4sq6WPDOR7mOFYOi7GlrQ4djeSbP6JG9Pv9tJDM97PedRSww=="],
 
