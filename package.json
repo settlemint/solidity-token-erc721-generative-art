@@ -49,7 +49,7 @@
     "@mapbox/node-pre-gyp": "2.0.3",
     "@nomicfoundation/solidity-analyzer-linux-x64-gnu": "0.1.2",
     "canvas": "3.2.0",
-    "ethers": "6.15.0",
+    "ethers": "6.16.0",
     "image-size": "2.0.2",
     "ipfs-http-client": "55.0.0",
     "keccak256": "1.0.6",
